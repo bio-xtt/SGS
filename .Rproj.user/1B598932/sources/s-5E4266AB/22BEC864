@@ -3,7 +3,7 @@
     "path": "~/Desktop/SGS/R/sgsR.R",
     "project_path": "R/sgsR.R",
     "type": "r_source",
-    "hash": "693750805",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1636457490957.0,
@@ -12,8 +12,8 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "384,29",
-        "scrollLine": "366"
+        "cursorPosition": "380,2",
+        "scrollLine": "365"
     },
     "folds": "",
     "lastKnownWriteTime": 1636463372,
