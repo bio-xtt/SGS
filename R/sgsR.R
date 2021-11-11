@@ -434,8 +434,9 @@ ExportToSGS <- function(object,
     "Connection" = "keep-alive"
   )
 
-  # post_url <- "http://localhost:6102/api/sc/add/seurat"
-  post_url <- "http://47.74.241.105:6102/api/sc/add/seurat"
+
+  post_url <- "http://sgs-api:6102/api/sc/add/seurat"
+  # post_url <- "http://47.74.241.105:6102/api/sc/add/seurat"
 
   post_body <- gsub("/home/sgs/data", "", path_list_j)
 

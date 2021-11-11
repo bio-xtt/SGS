@@ -1,7 +1,0 @@
-library(devtools)
-library(roxygen2)
-setwd("/home/bio-xtt/Desktop/SGS")
-roxygenize("/home/bio-xtt/Desktop/SGS")
-load_all()
-?devtools::install_github
-
