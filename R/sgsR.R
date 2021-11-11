@@ -182,6 +182,9 @@ gain_data <- function(object,
 
   meta_df <- data.frame(cell = rownames(df), df, check.names = FALSE)
 
+  ###this add 2021.11.12!!1
+  meta_df <- lapply(meta_df, as.character)
+
   cell_meta_column <- colnames(df)
 
   rownames(meta_df) <- NULL
