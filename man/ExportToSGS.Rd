@@ -20,13 +20,13 @@ ExportToSGS(
 \arguments{
 \item{object}{Seurat object}
 
-\item{species_id}{the species id of the species}
+\item{species_id}{the id of the species}
 
 \item{track_name}{the name of the single cell track}
 
 \item{track_type}{the type of the single cell track, transcript or atac}
 
-\item{select_group}{vector of group names to group the cell}
+\item{select_group}{vector of cell group names to export.}
 
 \item{reductions}{vector of reduction names to export, defaults to all reductions.}
 
@@ -34,9 +34,9 @@ ExportToSGS(
 
 \item{ident.field}{name of the idents used to caculate the marker gene when there is no marker file}
 
-\item{matrix.slot}{matrix to use, default is 'scaled data'(scale.data / counts)}
+\item{matrix.slot}{matrix to use ("data" or "counts"), default is 'scale.data'.}
 
-\item{markers.n}{no markers were supplied, FindAllMarkers is run.}
+\item{markers.n}{no marker files were supplied, FindAllMarkers is run, markers.n is used to setting the number of gene to export.}
 }
 \value{
 This function exports Seurat object as a set of merged matrix feather file and the json format information to send post

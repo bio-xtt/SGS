@@ -1,3 +1,4 @@
+
 #' Findmatrix type
 #' @description find expression matrix from seurat object like:counts,scale.data
 #' @param object Seurat object
@@ -17,7 +18,6 @@ findMatrix <- function(object, matrix.slot) {
   }
   return(counts)
 }
-
 
 
 
@@ -168,7 +168,7 @@ gain_data <- function(object,
 
   meta_df <- data.frame(cell = rownames(df), df, check.names = FALSE)
 
-  ###this add 2021.11.12!!!2
+  ###translate the datatype into character
   meta_df <- as.data.frame(lapply(meta_df, as.character))
 
   cell_meta_column <- colnames(df)
@@ -217,13 +217,10 @@ gain_data <- function(object,
   path_list <- list()
 
   ######## write to father
-  # devtools::install_github("wesm/feather/R")
-
   if (!requireNamespace("feather", quietly = TRUE)) {
     message("feather has not been install,please install it and run the script!")
-    devtools::install_github("wesm/feather/R")
+    # devtools::install_github("wesm/feather/R")
   } else {
-    # require(feather)
 
     feather_file_path <- file.path(dir, "all_file.feather")
     message("the feather file path is:", feather_file_path)
@@ -304,12 +301,7 @@ gain_data <- function(object,
         marker_df <- cbind(gene = top.markers$`gene`, cluster = top.markers$`cluster`, marker_df)
       }
 
-      # if (require(tidyverse)) {
-      #   write_tsv(x = marker_df, file = fname)
-      # } else {
-      #   message("there is no package named tidyverse, please install it and rerun the fun")
-      #   stop()
-      # }
+
 
       readr::write_tsv(x = marker_df, file = fname)
       ## this add by xtt
@@ -338,15 +330,15 @@ gain_data <- function(object,
 #' ExportToSGS
 #' @description this function used to add Seurat object to SGS browser
 #' @param object Seurat object
-#' @param species_id the species id of the species
+#' @param species_id the id of the species
 #' @param track_name the name of the single cell track
 #' @param track_type the type of the single cell track, transcript or atac
-#' @param select_group vector of group names to group the cell
+#' @param select_group vector of cell group names to export.
 #' @param reductions vector of reduction names to export, defaults to all reductions.
 #' @param markers.file path to file with marker genes.
 #' @param ident.field name of the idents used to caculate the marker gene when there is no marker file
-#' @param matrix.slot matrix to use, default is 'scaled data'(scale.data / counts)
-#' @param markers.n no markers were supplied, FindAllMarkers is run, markers.n is used to setting the number of gene to export.
+#' @param matrix.slot matrix to use ("data" or "counts"), default is 'scale.data'.
+#' @param markers.n no marker files were supplied, FindAllMarkers is run, markers.n is used to setting the number of gene to export.
 #' @return This function exports Seurat object as a set of merged matrix feather file and the json format information to send post
 #'
 #' @importFrom Seurat Project Idents GetAssayData Embeddings FetchData DefaultAssay FindAllMarkers GetAssay
@@ -390,14 +382,14 @@ ExportToSGS <- function(object,
                         ident.field = NULL,
                         matrix.slot = "data",
                         markers.n = 100) {
+
   results <- gain_data(
     object,
     reductions,
     markers.file,
     ident.field,
     matrix.slot,
-    markers.n
-  )
+    markers.n)
 
   path_list <- results[[5]]
   path_list$all_meta_columns <- results[[2]] ## 默认输出全部meta列
@@ -430,7 +422,7 @@ ExportToSGS <- function(object,
   post_body <- gsub("/home/sgs/data", "", path_list_j)
 
   post_result <- httr::POST(url = post_url, body = post_body, encode = "json", add_headers(.headers = header))
-  # return(list(post_body, post_result))
+
   post_status <- httr::status_code(post_result)
 
   post_content <- httr::content(post_result)
