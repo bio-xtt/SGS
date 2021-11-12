@@ -32,7 +32,7 @@ marker_file <- system.file("extdata", "markers.tsv", package = "SGSR")
 # use the export function
 result_content <- ExportToSGS(
   object = pbmc_small,
-  species_id = "ca4570d9c5464f10915e2def60b94780",
+  species_id = "e6a2c0a9cfaf4a72854ae57c2ed54e47",
   track_name = "pbmc_small",
   track_type = "transcript",
   reductions = c("tsne", "umap"),
@@ -59,7 +59,7 @@ data("pbmc_small")
 # use the export function to run marker
 result_content <- ExportToSGS(
   object = pbmc_small,
-  species_id = "ca4570d9c5464f10915e2def60b94780",
+  species_id = "e6a2c0a9cfaf4a72854ae57c2ed54e47",
   track_name = "pbmc_small",
   track_type = "transcript",
   select_group = c("groups", "RNA_snn_res.0.8","letter.idents","cluster"),
@@ -85,7 +85,7 @@ marker_file <- system.file("extdata", "markers.tsv", package = "SGSR")
 # use the export function
 result_content <- ExportToSGS(
   object = pbmc_small,
-  species_id = "ca4570d9c5464f10915e2def60b94780",
+  species_id = "e6a2c0a9cfaf4a72854ae57c2ed54e47",
   track_name = "pbmc_small",
   track_type = "transcript",
   reductions = c("tsne", "umap"),
@@ -103,7 +103,7 @@ matrix.slot:set the type of the matrix to export, default is "scale.data" , you 
 # export raw counts data              
 result_content <- ExportToSGS(
   object = pbmc_small,
-  species_id = "ca4570d9c5464f10915e2def60b94780",
+  species_id = "e6a2c0a9cfaf4a72854ae57c2ed54e47",
   track_name = "pbmc_small",
   track_type = "transcript",
   reductions = c("tsne", "umap"),
