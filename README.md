@@ -62,7 +62,7 @@ result_content <- ExportToSGS(
   species_id = "ca4570d9c5464f10915e2def60b94780",
   track_name = "pbmc_small",
   track_type = "transcript",
-  select_group = c("groups", "RNA_snn_res.0.8","letter.idents","cluster")
+  select_group = c("groups", "RNA_snn_res.0.8","letter.idents","cluster"),
   markers.n = 100   
 )
 
