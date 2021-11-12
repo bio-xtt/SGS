@@ -1,17 +1,3 @@
-if (!requireNamespace("httr", quietly = TRUE)) install.packages("httr")
-if (!requireNamespace("readr", quietly = TRUE)) install.packages("readr")
-if (!requireNamespace("jsonlite",quietly = TRUE)) install.packages("jsonlite")
-if (!requireNamespace("feather",quietly = TRUE)) devtools::install_github("wesm/feather/R")
-if (!requireNamespace("tidyverse",quietly = TRUE)) install.packages("tidyverse")
-if (!requireNamespace("uuid",quietly = TRUE)) install.packages("uuid")
-if (!requireNamespace("Seurat",quietly = TRUE)) install.packages("Seurat")
-
-
-
-
-
-
-
 #' Findmatrix type
 #' @description find expression matrix from seurat object like:counts,scale.data
 #' @param object Seurat object
@@ -360,7 +346,7 @@ gain_data <- function(object,
 #' @param markers.file path to file with marker genes.
 #' @param ident.field name of the idents used to caculate the marker gene when there is no marker file
 #' @param matrix.slot matrix to use, default is 'scaled data'(scale.data / counts)
-#' @param markers.n no markers were supplied, FindAllMarkers is run.
+#' @param markers.n no markers were supplied, FindAllMarkers is run, markers.n is used to setting the number of gene to export.
 #' @return This function exports Seurat object as a set of merged matrix feather file and the json format information to send post
 #'
 #' @importFrom Seurat Project Idents GetAssayData Embeddings FetchData DefaultAssay FindAllMarkers GetAssay
